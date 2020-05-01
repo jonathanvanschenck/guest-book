@@ -13,13 +13,27 @@ inside `docker` containers
 
 # Development
 ## Set up
-## Running
+```bash
+ $ cd flask
+ $ python3 -m venv venv
+ $ source venv/bin/activate
+ (venv) $ pip install -r requirements.txt
+ (venv) $ python scripts/generate_env.py
+```
 
+## Running
+```bash
+ (venv) $ python wsgi.py
+```
+
+```bash
+ (venv) $ gunicorn wsgi --worker-class eventlet --bind localhost:8000  
+```
 
 # To Do
 ## Step 1 - It works
  - [x] Create file structure
- - [ ] Get flask to run locally
+ - [x] Get flask to run locally
  - [ ] Add socket.io support
  - [ ] Add db support
 ## Step 2 - Dockerify
@@ -29,3 +43,4 @@ inside `docker` containers
  - [ ] Configure prostgres container
 ## Step 3 - Make is Pretty
  - [ ] Use bootstrap to make it look not awful
+ - [ ] Flesh out the README

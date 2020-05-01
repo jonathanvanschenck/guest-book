@@ -1,1 +1,6 @@
-# This imports the flask app factory so that gunicorn can host it
+# This imports the flask app instance so that gunicorn can host it
+
+from app import app as application
+
+if __name__ == "__main__":
+    application.run(port="8000")
