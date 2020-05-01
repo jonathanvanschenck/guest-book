@@ -34,6 +34,8 @@ inside `docker` containers
 ## Step 1 - It works
  - [x] Create file structure
  - [x] Get flask to run locally
+ - [x] Get javascript to work
+ - [ ] Design Guest Book html page
  - [ ] Add socket.io support
  - [ ] Add db support
 ## Step 2 - Dockerify
