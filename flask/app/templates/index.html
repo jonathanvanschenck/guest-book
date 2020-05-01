@@ -9,8 +9,21 @@
   <div class="container">
     <h1>Guest Book</h1>
     <p>
-      The guest book will eventually go here . . .
+      Thank you for attending our event! Feel free to leave a message below,
+      and read what other guests have written!
     </p>
+
+    <form>
+      <label for="name-input">Name</label>
+      <input type="text" name="name-input" id="name-input">
+      <label for="message-input">Message</label>
+      <textarea name="message-input" id="message-input" rows="4" cols="40"></textarea>
+      <input type="button" id="post-button" name="post-button" value="Post" onclick="attemptPost()">
+    </form>
+
+    <div class="log">
+      Posts will eventually go here . . .
+    </div>
   </div>
 
 
