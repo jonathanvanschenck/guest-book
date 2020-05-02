@@ -21,11 +21,11 @@
       <input type="button" id="post-button" name="post-button" value="Post" onclick="attemptPost()">
     </form>
 
-    <div class="log">
+    <div id="log">
       Posts will eventually go here . . .
     </div>
   </div>
 
-
+  <script src="{{ url_for('static', filename='jquery/jquery-4.3.1.js') }}"></script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

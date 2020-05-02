@@ -36,6 +36,7 @@ inside `docker` containers
  - [x] Get flask to run locally
  - [x] Get javascript to work
  - [x] Design Guest Book html page
+ - [x] Design Guest Book local javascript
  - [ ] Add socket.io support
  - [ ] Add db support
 ## Step 2 - Dockerify
