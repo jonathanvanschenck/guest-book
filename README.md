@@ -37,7 +37,7 @@ inside `docker` containers
  - [x] Get javascript to work
  - [x] Design Guest Book html page
  - [x] Design Guest Book local javascript
- - [ ] Add socket.io support
+ - [x] Add socket.io support
  - [ ] Add db support
 ## Step 2 - Dockerify
  - [ ] Create flask Dockerfile
@@ -46,4 +46,5 @@ inside `docker` containers
  - [ ] Configure prostgres container
 ## Step 3 - Make is Pretty
  - [ ] Use bootstrap to make it look not awful
+ - [ ] Add user feedback about server connection status
  - [ ] Flesh out the README

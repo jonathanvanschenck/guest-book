@@ -5,12 +5,34 @@ var log = $("#log")
 var name_input = $("#name-input")
 var message_input = $("#message-input")
 
+// Attach Socket.io
+var socket = io();
+
+socket.on("connect", function() {
+  console.log('connected');
+});
+socket.on("disconnect", function () {
+  socket.emit("disconnect_request");
+  console.log('disconnected');
+});
+socket.on("log_in_console", function(msg) {
+  // log whatever message into the console (debugging)
+  console.log(msg);
+});
+socket.on("render_post", function(msg) {
+  // render a single post into the log div
+  render_post(msg);
+});
+
 attemptPost = function() {
-  render_post({
-    name: name_input[0].value,
-    message: message_input[0].value,
-    skip_animate: false
-  })
+  socket.emit(
+    "broadcast_post",
+    {
+      name: name_input[0].value,
+      message: message_input[0].value,
+      skip_animate: false
+    }
+  )
 };
 
 render_post = function(msg) {
@@ -24,5 +46,5 @@ render_post = function(msg) {
   // Attach the post to the log div
   log.prepend(new_post)
   // Animate entrance
-  new_post.slideDown(msg.skip_animate ? 0 : 600)
+  new_post.slideDown(msg.skip_animate ? 0 : 1000)
 }
