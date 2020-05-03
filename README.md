@@ -19,13 +19,16 @@ inside `docker` containers
  $ source venv/bin/activate
  (venv) $ pip install -r requirements.txt
  (venv) $ python scripts/generate_env.py
+ (venv) $ ./scripts/generate_database.sh
 ```
 
 ## Running
+Test server
 ```bash
  (venv) $ python wsgi.py
 ```
-
+Development ready server (slower startups, worse logging and no debug mode, but
+more accurate performance)
 ```bash
  (venv) $ gunicorn wsgi --worker-class eventlet --bind localhost:8000  
 ```
@@ -38,7 +41,7 @@ inside `docker` containers
  - [x] Design Guest Book html page
  - [x] Design Guest Book local javascript
  - [x] Add socket.io support
- - [ ] Add db support
+ - [x] Add db support
 ## Step 2 - Dockerify
  - [ ] Create flask Dockerfile
  - [ ] Configure nginx container
@@ -46,5 +49,6 @@ inside `docker` containers
  - [ ] Configure prostgres container
 ## Step 3 - Make is Pretty
  - [ ] Use bootstrap to make it look not awful
+ - [ ] Add error checking in the submit form
  - [ ] Add user feedback about server connection status
  - [ ] Flesh out the README
