@@ -1,11 +1,36 @@
 version: '3.7'
 
 services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    # Attach the static files from the flask app
+    #  to the ngnix container to let it server
+    #  them directly
+    volumes:
+    - ./flask/app/static:/static
+    networks:
+      - my_network
 
   flask:
     build: ./flask
     container_name: flask
     restart: always
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
+    # Gunicorn needs to run on the "external" port of the container
+    #  so that nginx can find it
     command: gunicorn wsgi --worker-class eventlet --bind 0.0.0.0:8000
+    networks:
+      my_network:
+        # Set flask container's domain name so that nginx can find it
+        #  using the alias rather than the whatever rando "ip address"
+        #  docker gives to the flask container
+        aliases:
+          - flask-app
+
+networks:
+  my_network:

@@ -10,6 +10,8 @@ inside `docker` containers
  $ docker-compose build
  $ docker-compose up
 ```
+The app should be visible at http://localhost/
+
 After you are done, kill the containers:
 ```bash
  $ docker-compose down
