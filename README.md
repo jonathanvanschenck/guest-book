@@ -50,7 +50,7 @@ more accurate performance)
  - [x] Add db support
 ## Step 2 - Dockerify
  - [x] Create flask Dockerfile
- - [ ] Configure nginx container
+ - [x] Configure nginx container
  - [ ] Modify flask to allow for postgres DB
  - [ ] Configure prostgres container
 ## Step 3 - Make is Pretty
