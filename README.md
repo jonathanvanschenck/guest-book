@@ -10,6 +10,10 @@ inside `docker` containers
  $ docker-compose build
  $ docker-compose up
 ```
+After you are done, kill the containers:
+```bash
+ $ docker-compose down
+```
 
 # Development
 ## Set up
@@ -43,7 +47,7 @@ more accurate performance)
  - [x] Add socket.io support
  - [x] Add db support
 ## Step 2 - Dockerify
- - [ ] Create flask Dockerfile
+ - [x] Create flask Dockerfile
  - [ ] Configure nginx container
  - [ ] Modify flask to allow for postgres DB
  - [ ] Configure prostgres container
