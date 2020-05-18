@@ -16,6 +16,12 @@ After you are done, kill the containers:
 ```bash
  $ docker-compose down
 ```
+If you are REALLY done, and want to wipe the database, then also run:
+```bash
+ $ docker volume prune
+```
+But, be careful, cause this will kill other docker container's databases too
+if don't have then active when you run this command. Be smart.
 
 # Development
 ## Set up
@@ -24,7 +30,7 @@ After you are done, kill the containers:
  $ python3 -m venv venv
  $ source venv/bin/activate
  (venv) $ pip install -r requirements.txt
- (venv) $ python scripts/generate_env.py
+ (venv) $ python scripts/generate_env.py development
  (venv) $ ./scripts/generate_database.sh
 ```
 
@@ -51,8 +57,8 @@ more accurate performance)
 ## Step 2 - Dockerify
  - [x] Create flask Dockerfile
  - [x] Configure nginx container
- - [ ] Modify flask to allow for postgres DB
- - [ ] Configure prostgres container
+ - [x] Modify flask to allow for postgres DB
+ - [x] Configure postgres container
 ## Step 3 - Make is Pretty
  - [ ] Use bootstrap to make it look not awful
  - [ ] Add error checking in the submit form

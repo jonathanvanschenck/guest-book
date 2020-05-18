@@ -12,7 +12,6 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-
 # Install requirements (do this before copying source files
 #  for faster re-compiles)
 RUN pip install --upgrade pip
@@ -23,5 +22,11 @@ RUN pip install -r requirements.txt
 COPY . /usr/src/app/
 
 # Set up environment and db
-RUN python scripts/generate_env.py
-RUN ./scripts/generate_database.sh
+RUN python scripts/generate_env.py production
+RUN flask db init
+
+# Set the entrypoint for the app when it is run,
+#  this allows the container here to both wait for the db
+#  to be functional, and upgrade the db before starting the
+#  webserver.
+ENTRYPOINT ./scripts/entrypoint.sh

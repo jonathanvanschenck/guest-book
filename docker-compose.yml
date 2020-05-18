@@ -21,16 +21,45 @@ services:
     restart: always
     expose:
       - "8000"
-    # Gunicorn needs to run on the "external" port of the container
-    #  so that nginx can find it
-    command: gunicorn wsgi --worker-class eventlet --bind 0.0.0.0:8000
     networks:
       my_network:
         # Set flask container's domain name so that nginx can find it
         #  using the alias rather than the whatever rando "ip address"
         #  docker gives to the flask container
+        #  Technically, this should just work automatically, but I keep
+        #  getting errors if I don't do this manually
         aliases:
           - flask-app
+    depends_on:
+      - db
+    environment:
+      SQL_PORT: 5432
+      SQL_HOST: db-app
+
+  db:
+    build: ./postgres
+    container_name: db
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: flask_user
+      POSTGRES_PASSWORD: flask_password
+      POSTGRES_DB: flask_db
+    networks:
+      my_network:
+        # Set db container's domain name so that flask can find it
+        #  using the alias rather than the whatever rando "ip address"
+        #  docker gives to the flask container
+        #  Technically, this should just work automatically, but I keep
+        #  getting errors if I don't do this manually
+        aliases:
+          - db-app
 
 networks:
   my_network:
+
+volumes:
+  postgres_data:

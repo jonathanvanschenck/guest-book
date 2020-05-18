@@ -9,7 +9,7 @@ load_dotenv()
 class Config(object):
     # Security keys
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    
+
     # SQL params
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                                 'sqlite:///' + os.path.join(basedir, 'app.db')
