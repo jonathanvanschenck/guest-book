@@ -56,6 +56,10 @@ attemptPost = function() {
       message: message_input[0].value
     }
   )
+  // Reset form
+  name_input[0].value = "";
+  message_input[0].value = "";
+
 };
 
 render_post = function(msg) {
