@@ -62,5 +62,5 @@ more accurate performance)
 ## Step 3 - Make is Pretty
  - [x] Use bootstrap to make it look not awful
  - [x] Add error checking in the submit form
- - [ ] Add user feedback about server connection status
+ - [x] Add user feedback about server connection status
  - [ ] Flesh out the README

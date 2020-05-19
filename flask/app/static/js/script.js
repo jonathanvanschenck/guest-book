@@ -9,20 +9,36 @@ var message_input = $("#message-input")
 var socket = io();
 
 socket.on("connect", function() {
-  console.log('connected');
+  // console.log('connected');
+
+  // Activate Post Button
+  $("#post-button")
+    .toggleClass("btn-warning",false)
+    .toggleClass("btn-primary",true)
+    [0].setCustomValidity("");
 });
+
 socket.on("disconnect", function () {
   socket.emit("disconnect_request");
-  console.log('disconnected');
+  // console.log('disconnected');
+
+  // Deactivate Post Button
+  $("#post-button")
+    .toggleClass("btn-warning",true)
+    .toggleClass("btn-primary",false)
+    [0].setCustomValidity("No server connection");
 });
+
 socket.on("log_in_console", function(msg) {
   // log whatever message into the console (debugging)
   console.log(msg);
 });
+
 socket.on("render_post", function(msg) {
   // render a single post into the log div
   render_post(msg);
 });
+
 socket.on("render_post_list", function(msg) {
   // render a list of posts into the log div
   log.empty();
