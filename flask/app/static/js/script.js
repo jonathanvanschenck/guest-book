@@ -47,14 +47,27 @@ render_post = function(msg) {
   let post_time = new Date(Date.now()-1000*msg.timedelta);
   // Create the new post html, hidden
   let new_post = $("<div>")
-    .toggleClass("post-container").append(
-      $("<h5>").text(msg.name + " : ").append(
-          $("<time>").toggleClass("timeago")
-            .attr("datetime",post_time.toISOString())
-            .text($.timeago(post_time.toISOString()))
+    .toggleClass("post-container")
+    .toggleClass("card")
+    .toggleClass("mb-1") // set margin
+    .toggleClass("bg-light").append(
+      $("<h5>")
+      .toggleClass("card-title")
+      .toggleClass("p-1")
+      .toggleClass("mb-0")
+      .text(msg.name + " : ").append(
+          $("<time>")
+          .toggleClass("timeago")
+          .toggleClass('text-muted')
+          .attr("datetime",post_time.toISOString())
+          .text($.timeago(post_time.toISOString()))
         )
     ).append(
-      $("<p>").text(msg.message)
+      $("<p>")
+      .toggleClass('card-body')
+      .toggleClass('p-2')
+      .toggleClass("mb-1")
+      .text(msg.message)
     ).hide()
   // Attach the post to the log div
   log.prepend(new_post)

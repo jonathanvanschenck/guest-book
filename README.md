@@ -60,7 +60,7 @@ more accurate performance)
  - [x] Modify flask to allow for postgres DB
  - [x] Configure postgres container
 ## Step 3 - Make is Pretty
- - [ ] Use bootstrap to make it look not awful
+ - [x] Use bootstrap to make it look not awful
  - [ ] Add error checking in the submit form
  - [ ] Add user feedback about server connection status
  - [ ] Flesh out the README
